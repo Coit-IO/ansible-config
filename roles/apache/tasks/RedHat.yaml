@@ -1,0 +1,11 @@
+- name: make sure that Apache is Installed
+  yum: 
+    name: "{{ package_name }}"
+    update_cache: yes
+    state: latest
+
+- name: Make sure that Apache us Running
+  service:
+    name: "{{ service_name }}"
+    enabled: yes
+    state: started

@@ -1,0 +1,24 @@
+    - name: make sure that Apache is installed on the remote webservers
+      apt:
+        name: "{{ package_name }}"
+        state: latest
+        update_cache: yes
+    - name: make sure that Apache is installed on the remote webservers
+      apt:
+        name: libapache2-mod-php
+        state: latest
+        update_cache: yes
+    - name: Make sure that Apache Service is started and enabled at reboot
+      service:
+        name: "{{ service_name }}"
+        state: started
+        enabled: yes
+    - name: Make sure that index.html file is present in the /var/www/html
+      copy:
+        src: "{{ index_file }}"
+        dest: "{{ document_root }}/{{ index_file }}"
+    - name: Copy Apache Configurations of the websites and restart apache if needed
+      template:
+        src: website.conf
+        dest: /etc/apache2/sites-enabled/website.conf
+      notify: Restart Apache

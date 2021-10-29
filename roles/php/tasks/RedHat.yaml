@@ -1,0 +1,5 @@
+- name: Install PHP
+  yum:
+    name: php
+    update_cache: yes
+

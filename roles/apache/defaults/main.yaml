@@ -1,0 +1,7 @@
+index_file: index.php
+document_root: /var/www/html
+website_list:
+   - basil.com
+   - devops.com
+   - test.com
+   - example.com
